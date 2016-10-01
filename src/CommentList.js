@@ -18,4 +18,10 @@ function CommentList(props) {
     )
 }
 
+CommentList.propTypes = {
+    comments: PropTypes.array,
+    isOpen: PropTypes.bool.isRequired,
+    toggleOpen: PropTypes.func.isRequired
+};
+
 export default toggleOpen(CommentList)
