@@ -8,7 +8,7 @@ export default function accordion(Component) {
 
         toggleArticle = id => ev => {
             this.setState({
-                openArticleId: id
+                openArticleId: id != this.state.openArticleId ? id : null
             })
         };
 
