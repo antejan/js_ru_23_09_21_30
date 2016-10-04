@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import Comment from './Comment'
-import toggleOpen from './decorators/toggleOpen'
+import toggleOpen from './../decorators/toggleOpen'
 
 function CommentList(props) {
     const { comments, isOpen, toggleOpen } = props
@@ -20,8 +20,9 @@ function CommentList(props) {
 
 CommentList.propTypes = {
     comments: PropTypes.array,
-    isOpen: PropTypes.bool.isRequired,
-    toggleOpen: PropTypes.func.isRequired
-};
+    //form toggleOpen decorator
+    isOpen: PropTypes.bool,
+    toggleOpen: PropTypes.func
+}
 
 export default toggleOpen(CommentList)
