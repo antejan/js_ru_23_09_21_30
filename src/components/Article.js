@@ -47,7 +47,7 @@ class Article extends Component {
 
         return (
             <div>
-                <h3 onClick = {openArticle}>{article.title}</h3>
+                <h3 onClick = {openArticle}>{article.title} - {new Date(article.date).toLocaleDateString()}</h3>
                 <a href ="#" onClick = {this.handleDelete}>delete me</a>
                 <CSSTransition
                     transitionName="article"
