@@ -6,15 +6,11 @@ import Filters from './Filters'
 import Counter from './Counter'
 
 class Container extends Component {
-    static propTypes = {
-
-    };
-
-    render() {
+   render() {
         return (
             <div>
                 <Counter />
-                <Filters articles = {[]}/>
+                <Filters />
                 <ArticleList />
                 <Chart />
                 <NewArticleForm />
