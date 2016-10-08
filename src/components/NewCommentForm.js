@@ -1,47 +1,34 @@
 import React, { Component, PropTypes } from 'react'
 
 class NewCommentForm extends Component {
+    static propTypes = {
+    };
 
     state = {
-        name: '',
-        comment: ''
-    };
+        text: '',
+        user: ''
+    }
 
-    handleNameChange = ev => {
+    handleChange = field => ev => this.setState({
+        [field]: ev.target.value
+    })
+
+    handleSubmit = ev => {
+        ev.preventDefault()
+        console.log('---', this.state)
         this.setState({
-            name: ev.target.value
+            user: '',
+            text: ''
         })
-    };
-
-    handleCommentChange = ev => {
-      this.setState({
-        comment: ev.target.value
-      })
-    };
-
-    handleAddButtonClick = ev => {
-      const {name, comment} = this.state;
-      console.log({name, comment});
-    };
-
-    isFormValid = () => {
-      const {name, comment} = this.state;
-      return Boolean(name && comment);
-    };
+    }
 
     render() {
         return (
-            <fieldset label="New Comment">
-              <p>
-                <label htmlFor="name">Name</label><br/>
-                <input type="text" name="name" value = {this.state.title} onChange = {this.handleNameChange} />
-              </p>
-              <p>
-                <label htmlFor="comment">Comment</label><br/>
-                <textarea name="comments" onChange = {this.handleCommentChange} value = { this.state.comment } />
-              </p>
-              <button onClick = {this.handleAddButtonClick} disabled = { !this.isFormValid() }>Add Comment</button>
-            </fieldset>
+            <form onSubmit = {this.handleSubmit}>
+                comment: <input type="text" value={this.state.text} onChange = {this.handleChange('text')}/>
+                comment: <input type="text" value={this.state.user} onChange = {this.handleChange('user')}/>
+                <input type = "submit"/>
+            </form>
         )
     }
 }

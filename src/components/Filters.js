@@ -1,53 +1,20 @@
 import React, { Component, PropTypes } from 'react'
-import SelectComponent from './SelectComponent'
-import DateRangePicker from './DateRangePicker'
+import DatePicker from './DatePicker'
+import SelectFilter from './SelectFilter'
 
-import DayPicker, { DateUtils } from "react-day-picker"
-import 'react-day-picker/lib/style.css'
-
-class Filters extends Component {
+class Filter extends Component {
     static propTypes = {
-        articles: PropTypes.array
-    };
-
-    state = {
-        selectedArticle: null,
-        selectedDaysRangeFrom: null,
-        selectedDaysRangeTo: null
-    };
-
-    handleSelectChange = selectedArticle => this.setState({ selectedArticle });
-
-    handleDaysRangeChange = selectedDays => {
-        const { from, to } = selectedDays;
-        this.setState({
-            selectedDaysRangeFrom: from,
-            selectedDaysRangeTo: to
-        });
+        articles: PropTypes.array.isRequired
     };
 
     render() {
-        const selectOptions = this.props.articles.map(article => ({
-            label: article.title,
-            value: article.id
-        }));
-
         return (
             <div>
-                <SelectComponent
-                    options = {selectOptions}
-                    value = {this.state.selectedArticle}
-                    onChange = {this.handleSelectChange}
-                    multi={true}
-                />
-                <DateRangePicker
-                  handleDaysRangeChange = { this.handleDaysRangeChange }
-                  from = { this.state.selectedDaysRangeFrom }
-                  to = { this.state.selectedDaysRangeTo }
-                />
+                <DatePicker />
+                <SelectFilter articles = {this.props.articles} />
             </div>
         )
     }
 }
 
-export default Filters
+export default Filter
